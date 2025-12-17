@@ -6,33 +6,32 @@
     <title>B客户保障规划方案</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background-color: #f5f7fa;
             margin: 0;
             padding: 20px;
-            color: #333;
             line-height: 1.6;
         }
         .container {
             max-width: 900px;
             margin: 0 auto;
-            background-color: #ffffff;
+            background-color: white;
             border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
             padding: 30px;
-            position: relative;
         }
         .header {
             text-align: center;
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #e0e0e0;
+            border-bottom: 2px solid #e8f5e9;
         }
         .header h1 {
-            color: #1976D2;
+            color: #1b5e20;
             font-size: 28px;
-            font-weight: 600;
             margin: 0;
+            font-weight: 600;
         }
         .section {
             margin-bottom: 30px;
@@ -40,55 +39,57 @@
         .section-title {
             font-size: 20px;
             font-weight: 600;
-            color: #1976D2;
-            margin-bottom: 15px;
+            color: #1b5e20;
+            margin-bottom: 20px;
             padding-left: 10px;
-            border-left: 4px solid #1976D2;
+            border-left: 4px solid #1b5e20;
         }
         .info-card, .risk-card, .plan-card, .talk-card, .summary-card {
             background-color: #f8f9fa;
-            border-radius: 8px;
             padding: 20px;
+            border-radius: 8px;
             margin-bottom: 15px;
-            border-left: 4px solid;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #4a90e2;
         }
         .info-card {
-            border-left-color: #2196F3;
-            background-color: #E3F2FD;
+            border-left-color: #4a90e2;
+            background-color: #e3f2fd;
         }
         .risk-card {
-            border-left-color: #F44336;
-            background-color: #FFEBEE;
+            border-left-color: #ef6c00;
+            background-color: #fff3e0;
         }
         .plan-card {
-            border-left-color: #4CAF50;
-            background-color: #E8F5E9;
+            border-left-color: #2e7d32;
+            background-color: #e8f5e9;
         }
         .talk-card {
-            border-left-color: #FF9800;
-            background-color: #FFF3E0;
+            border-left-color: #7b1fa2;
+            background-color: #f3e5f5;
         }
         .summary-card {
-            border-left-color: #9C27B0;
-            background-color: #F3E5F5;
+            border-left-color: #c62828;
+            background-color: #ffebee;
         }
         .card-title {
             font-weight: 600;
+            color: #2c3e50;
             margin-bottom: 10px;
-            font-size: 16px;
             display: flex;
             align-items: center;
         }
-        .card-title span {
-            font-size: 20px;
-            margin-right: 10px;
+        .card-title::before {
+            content: "📋";
+            margin-right: 8px;
+            font-size: 18px;
         }
         .card-content {
-            color: #333;
+            color: #34495e;
+            font-size: 14px;
+            line-height: 1.6;
         }
         .card-content strong {
-            color: #1976D2;
+            color: #2c3e50;
         }
 
         /* PDF下载按钮样式 - 右上角 */
@@ -181,59 +182,60 @@
         <div class="section">
             <div class="section-title">一、客户信息</div>
             <div class="info-card">
-                <div class="card-title"><span>👤</span>客户基本情况</div>
+                <div class="card-title">客户基本情况</div>
                 <div class="card-content">
-                    • 年龄：51岁<br>
-                    • 性别：男<br>
-                    • 婚姻状态：离异后重组（未领证同居）<br>
-                    • 职业：曾任职供电局，近十年主要通过放贷、拍卖法拍房赚钱<br>
-                    • 健康状况：无明确提及<br>
-                    • 其他：独生子女
+                    • 年龄/性别：51岁，男性<br>
+                    • 婚姻状态：离异后重组家庭，未办理结婚登记（与38岁女友同居）<br>
+                    • 职业背景：早年任职供电局，后从事承兑汇票，近十年主要从事放贷、拍卖法拍房<br>
+                    • 家庭结构：独生子女<br>
+                    • 健康状况：未提供
                 </div>
             </div>
             <div class="info-card">
-                <div class="card-title"><span>👩❤️👨</span>配偶信息</div>
+                <div class="card-title">配偶及伴侣信息</div>
                 <div class="card-content">
-                    • 现任伴侣：38岁女友（未领证）<br>
-                    • 前妻：中学优秀教师，已再婚
+                    • 现任伴侣：38岁女友（未领证，推测为防范财富流失）<br>
+                    • 前妻信息：中学优秀教师，已再婚
                 </div>
             </div>
             <div class="info-card">
-                <div class="card-title"><span>👶</span>子女信息</div>
+                <div class="card-title">子女信息</div>
                 <div class="card-content">
-                    • 子女数量：2人（同父异母，互不知晓）<br>
-                    • 长子（前妻所生）：16岁，市重点高中在读，略显贪玩<br>
-                    • 次子（现女友所生）：8岁，懂事
+                    • 长子：16岁，前妻所生，市重点高中在读，略显贪玩<br>
+                    • 次子：8岁，现任女友所生，性格懂事<br>
+                    • 特殊情况：两个儿子互不知晓对方存在<br>
+                    • 抚养/教育支出：未具体说明，但考虑到重点高中及家庭背景，预计支出较高
                 </div>
             </div>
             <div class="info-card">
-                <div class="card-title"><span>👵</span>父母信息</div>
+                <div class="card-title">父母信息</div>
                 <div class="card-content">
                     • 父亲：已病逝<br>
                     • 母亲：76岁，身体健康，未再婚<br>
-                    • 特殊情况：客户约一半金融资产存放在母亲名下
+                    • 特殊关联：客户约一半金融资产存放在母亲名下
                 </div>
             </div>
             <div class="info-card">
-                <div class="card-title"><span>💰</span>资产配置情况</div>
+                <div class="card-title">资产配置情况</div>
                 <div class="card-content">
-                    • 房产：估值9000余万元（含投资商铺、近百套住房及停车场）<br>
+                    • 房产：估值约9000余万元（含投资商铺、近百套住房及停车场）<br>
                     • 金融资产总量：4000余万元<br>
-                    • 存款/理财：保本保息类（大额存单）3100万元；固收理财600万元；天天理财600万元<br>
-                    • 股票：持仓1000万元<br>
-                    • 外币：港币数百万元（存放于香港账户）<br>
-                    • 保险：目前无配置<br>
-                    • 基金：无配置
+                    • 存款/大额存单：3100万元（保本保息类）<br>
+                    • 固收理财：600万元<br>
+                    • 天天理财：600万元<br>
+                    • 股票持仓：1000万元<br>
+                    • 境外资产：港币数百万元（存放于香港账户）<br>
+                    • 保险/基金：无配置
                 </div>
             </div>
             <div class="info-card">
-                <div class="card-title"><span>🧠</span>理念与核心诉求</div>
+                <div class="card-title">理念与核心诉求</div>
                 <div class="card-content">
-                    • 投资偏好：银行端偏好保本灵活，拒绝基金；自操盘股票<br>
-                    • 保险态度：曾极度排斥，近期有配置港险意向但纠结保额与资金占用<br>
-                    • 传承规划：曾提及拟立遗嘱，对子女纠纷持"诉讼解决"态度<br>
-                    • 消费习惯：喜爱赴港澳购物<br>
-                    • 婚姻态度：未领证推测为防范财富流失
+                    • 投资偏好：保守偏好（银行端仅选保本灵活），股票端自信（认为买基金不如自己买股票）<br>
+                    • 风险认知：对国内保险行业存在极深误解（认为非法集资），拒绝基金<br>
+                    • 传承规划：拟立遗嘱，接受诉讼解决争议<br>
+                    • 保险态度：近期有关注香港保险，但认为小额配置无意义，大额占用资金，目前排斥国内保险<br>
+                    • 消费习惯：常去港澳购物，不赌博
                 </div>
             </div>
         </div>
@@ -241,57 +243,36 @@
         <div class="section">
             <div class="section-title">二、风险详细诊断</div>
             <div class="risk-card">
-                <div class="card-title"><span>👵</span>养老规划风险</div>
+                <div class="card-title">风险大类一：资产配置风险</div>
                 <div class="card-content">
-                    <strong>现状描述</strong>：客户51岁临近退休，资产配置中无保险资产，缺乏稳定的养老金现金流规划，现有资产偏重流动性但长期养老保障不足<br>
-                    <strong>潜在风险及后果</strong>：<br>
-                    （1）股票投资波动性大，可能因市场剧烈波动导致退休生活质量急剧下降；<br>
-                    （2）缺乏与寿命等长的确定性养老收入来源，晚年生活可能面临资金短缺困境；<br>
-                    （3）现有资产配置无法提供持续稳定的现金流，退休后可能被迫变现资产影响整体财富规划；<br>
-                    （4）无保险保障，医疗和护理费用可能侵蚀大量资产，影响生活品质
+                    <strong>1、现状描述：</strong><br>客户金融资产4000余万元中，保本保息类占比77.5%，权益类配置仅2.5%，远低于5%-15%合理区间下限，资产配置过度保守，缺乏多元化风险分散工具。
+                    <br>
+                    <strong>2、潜在风险及后果：</strong><br>
+                    （1）收益率无法跑赢通胀，资产实际购买力逐年缩水，长期财富积累目标难以实现；<br>
+                    （2）过度依赖固定收益产品，错失权益市场增长机会，财富增值空间受限；<br>
+                    （3）缺乏保险等风险对冲工具，面临突发风险时缺乏财务缓冲机制；<br>
+                    （4）港币资产境外存放面临汇率波动风险，资产价值受国际金融市场影响较大。
                 </div>
             </div>
             <div class="risk-card">
-                <div class="card-title"><span>💔</span>婚姻风险</div>
+                <div class="card-title">风险大类二：流动性风险</div>
                 <div class="card-content">
-                    <strong>现状描述</strong>：客户与38岁女友同居未办理结婚登记，复杂家庭关系缺乏法律保障，存在防范财富流失的婚姻安排<br>
-                    <strong>潜在风险及后果</strong>：<br>
-                    （1）同居关系缺乏法律保护，财产分割不明确，可能引发重大纠纷；<br>
-                    （2）防范财富流失的婚姻安排可能影响家庭稳定性，导致情感关系紧张；<br>
-                    （3）复杂家庭关系需要专业的财产规划，否则可能面临财产混同风险；<br>
-                    （4）根据《民法典》相关规定，未登记婚姻无法享有法定夫妻权利义务，权益保障不足
-                </div>
-            </div>
-            <div class="risk-card">
-                <div class="card-title"><span>🎓</span>子女教育规划风险</div>
-                <div class="card-content">
-                    <strong>现状描述</strong>：两个儿子年龄差异大（16岁和8岁），教育资金需求时间分布不均，缺乏专项教育金规划<br>
-                    <strong>潜在风险及后果</strong>：<br>
-                    （1）长子略显贪玩，缺乏教育激励与资金保障机制，可能影响学业发展；<br>
-                    （2）教育资金需求集中爆发时可能造成现金流压力，影响其他财务目标；<br>
-                    （3）缺乏专项规划可能导致教育资源分配不均衡，引发家庭矛盾；<br>
-                    （4）根据《民法典》第1067-1068条，父母有抚养教育义务，规划不足可能影响子女未来发展
-                </div>
-            </div>
-            <div class="risk-card">
-                <div class="card-title"><span>📊</span>资产配置风险</div>
-                <div class="card-content">
-                    <strong>现状描述</strong>：资产过度集中于房产投资，拒绝保险基金等工具，股票投资占比较高，缺乏长期锁定收益的稳健型配置<br>
-                    <strong>潜在风险及后果</strong>：<br>
-                    （1）房产投资流动性相对不足，急需用钱时可能无法快速变现；<br>
-                    （2）拒绝保险基金等工具导致资产配置结构不完善，风险分散不足；<br>
-                    （3）股票投资占比较高，市场波动风险较大，可能造成资产大幅缩水；<br>
-                    （4）缺乏长期锁定收益的稳健型配置，无法有效对冲通胀和利率下行风险
+                    <strong>1、现状描述：</strong><br>客户总资产1.3亿元中房产占比69.2%，近百套住房及停车场流动性较差，面临资产变现困难。
+                    <br>
+                    <strong>2、潜在风险及后果：</strong><br>
+                    （1）紧急资金需求时无法快速变现，可能错失投资机会或面临资金链断裂风险；<br>
+                    （2）房产市场波动影响整体资产价值稳定性，资产缩水风险集中；<br>
+                    （3）房产维护管理成本较高，占用大量现金流影响资金使用效率；<br>
+                    （4）过度集中房产投资，缺乏其他高流动性资产配置，资金调配灵活性不足。
                 </div>
             </div>
             <div class="summary-card">
-                <div class="card-title"><span>⚠️</span>风险总结</div>
+                <div class="card-title">风险总结</div>
                 <div class="card-content">
-                    1、养老保障严重不足，缺乏稳定现金流和长期收入来源；<br>
-                    2、婚姻关系法律保障缺失，财产分割风险突出；<br>
-                    3、子女教育规划不完善，资金需求时间分布不均；<br>
-                    4、资产配置结构不合理，风险分散和收益锁定能力不足；<br>
-                    5、整体缺乏系统性保障规划，多重风险叠加可能影响财富安全和家庭稳定
+                    1、资产配置过度保守，收益率偏低无法有效抵御通胀，长期财富保值增值目标面临挑战；<br>
+                    2、房产占比过高导致流动性严重不足，紧急资金需求时可能面临变现困难；<br>
+                    3、缺乏保险等多元化风险分散工具，整体资产结构抗风险能力较弱；<br>
+                    4、境外资产存放面临汇率和管理风险，资产安全性存在不确定性。
                 </div>
             </div>
         </div>
@@ -299,32 +280,31 @@
         <div class="section">
             <div class="section-title">三、方案设计</div>
             <div class="plan-card">
-                <div class="card-title"><span>⚖️</span>法律工具建议</div>
+                <div class="card-title">法律工具建议</div>
                 <div class="card-content">
-                    <strong>1、财产协议安排</strong>：基于《民法典》第1065条，建议签署书面财产协议，明确同居期间财产归属，避免财产混同风险；<br>
-                    <strong>2、遗嘱规划完善</strong>：结合《民法典》第1133条，建议设立正式遗嘱并考虑遗嘱信托安排，避免子女互不知晓导致的遗产纠纷；<br>
-                    <strong>3、监护权协议</strong>：针对未成年子女抚养教育，建议签署监护权相关协议，确保子女权益得到保障
+                    <strong>1、遗嘱公证：</strong>建议客户通过公证处设立正式遗嘱，明确两个儿子的继承份额和分配方式，避免未来因继承权确认复杂引发诉讼纠纷；<br>
+                    <strong>2、婚前财产协议：</strong>如与女友办理结婚登记，建议签署婚前财产协议，明确婚前资产范围，避免婚姻变动时的财产混同风险；<br>
+                    <strong>3、遗赠扶养协议：</strong>可与母亲签订遗赠扶养协议，明确赡养义务与财产继承关系，保障母亲晚年生活品质。
                 </div>
             </div>
             <div class="plan-card">
-                <div class="card-title"><span>💰</span>金融工具建议</div>
+                <div class="card-title">金融工具建议</div>
                 <div class="card-content">
-                    <strong>1、保障类工具配置说明</strong>：<br>建议客户配置1000万元增额终身寿险（主推产品），缴费方式为期缴，缴费期5年，年缴200万元<br>
-                    <strong>2、核心功能说明</strong>：<br>
-                    <strong>（1）收益锁定</strong>：提供明确的复利增长机制，年化复利收益可达保额的2.0%，长期可观，适合稳健型资产配置；<br>
-                    <strong>（2）财富传承</strong>：保险金归属于指定受益人个人财产，不属夫妻共同财产，有效规避因婚姻风险带来的家族财富流失；<br>
-                    <strong>（3）避债隔离</strong>：保单现金价值归投保人所有，可有效隔离债务，保障资产安全；<br>
-                    <strong>（4）轻度养老</strong>：可在晚年根据需要部分退保、减额领取，灵活释放现金流，保障晚年资金充足
+                    <strong>1、保障类工具配置说明：</strong><br>建议客户配置1000万元增额终身寿险（主推产品），缴费方式为期缴，年交200万元×5年；<br>
+                    <strong>2、核心功能说明：</strong><br>
+                    <strong>（1）收益锁定功能：</strong>增额寿险具备明确的复利增长机制，年化复利收益可达保额的2.0%，长期可观，有效解决资产配置过度保守问题；<br>
+                    <strong>（2）高流动性功能：</strong>最高可贷保单现金价值的80%，放款效率高，解决房产占比过高导致的流动性不足问题；<br>
+                    <strong>（3）避债隔离功能：</strong>保单现金价值归投保人所有，可有效隔离债务风险，防范财产执行风险；<br>
+                    <strong>（4）财富传承功能：</strong>保险金归属于指定受益人个人财产，有效规避因婚姻风险带来的家族财富流失。
                 </div>
             </div>
             <div class="plan-card">
-                <div class="card-title"><span>🎯</span>方案价值呈现</div>
+                <div class="card-title">方案价值呈现</div>
                 <div class="card-content">
-                    <strong>1、婚姻风险解决</strong>：通过财产协议明确财产归属，避免同居关系导致的财产分割纠纷，依据《民法典》第1065条保障各方权益；<br>
-                    <strong>2、养老保障完善</strong>：增额寿险提供稳定复利增长，确保晚年有持续现金流，解决缺乏确定性养老收入来源问题；<br>
-                    <strong>3、子女教育规划</strong>：通过保险金信托机制，可为两个儿子设立独立账户，确保教育资金专项专用，避免资金挪用风险；<br>
-                    <strong>4、资产配置优化</strong>：增额寿险提供长期锁利功能，不受金融市场波动干扰，有效对冲利率下行风险，完善资产配置结构；<br>
-                    <strong>5、财富传承安全</strong>：根据《保险法》第42条，明确指定受益人的保险金不属于被保险人遗产，不计入遗产清算范围，实现精准传承
+                    <strong>1、资产配置优化价值：</strong>通过增额寿险配置，将部分保守资产转化为具有稳定复利增长的保险资产，解决收益率偏低无法增值保值问题，同时保持资金流动性；<br>
+                    <strong>2、风险隔离保障价值：</strong>根据《保险法》第42条，明确指定受益人的保险金不属于被保险人遗产，不计入遗产清算范围，有效隔离企业经营风险；<br>
+                    <strong>3、财富传承规划价值：</strong>实现精准传承，保险金和信托受益金归属于指定受益人个人财产，避免因复杂家庭结构导致的继承纠纷；<br>
+                    <strong>4、流动性管理价值：</strong>通过保单贷款功能，最高可贷现金价值80%，解决紧急资金需求时的变现困难问题，提升资金使用效率。
                 </div>
             </div>
         </div>
@@ -332,36 +312,36 @@
         <div class="section">
             <div class="section-title">四、沟通话术</div>
             <div class="talk-card">
-                <div class="card-title"><span>💬</span>客户需求激发</div>
+                <div class="card-title">客户需求激发</div>
                 <div class="card-content">
-                    1、"从您目前的资产配置来看，虽然现金资产充足，但缺乏稳定的养老金现金流规划，51岁这个阶段如果现在不开始准备，等到60岁退休时可能面临资金短缺的困境"；<br>
-                    2、"您提到股票投资占比较高，市场波动风险确实较大，一旦遇到熊市可能会大幅影响您退休后的生活质量"；<br>
-                    3、"两个儿子年龄相差8岁，教育资金需求时间分布不均，如果没有专项规划，未来可能会造成现金流压力"；<br>
-                    4、"您与女友的同居关系缺乏法律保障，万一发生变故，财产分割可能会很复杂，需要提前做好法律安排"
+                    1、"从您目前的资产配置来看，保本保息类占比77.5%，权益类仅2.5%，远低于5%-15%合理区间，可能面临收益率偏低无法有效抵御通胀的短期缩水风险"；<br>
+                    2、"您总资产1.3亿中房产占比69.2%，近百套住房流动性较差，紧急资金需求时可能面临变现困难，错失投资机会"；<br>
+                    3、"您从事放贷法拍业务，缺乏保险等风险对冲工具，企业经营风险可能影响个人及家庭财产安全"；<br>
+                    4、"港币资产境外存放面临汇率波动风险，资产价值受国际金融市场影响较大，缺乏有效对冲机制"。
                 </div>
             </div>
             <div class="talk-card">
-                <div class="card-title"><span>🎯</span>方案价值呈现</div>
+                <div class="card-title">方案价值呈现</div>
                 <div class="card-content">
-                    <strong>1、养老风险解决</strong>："我们推荐的增额终身寿险提供明确的复利增长机制，年化复利收益可达保额的2.0%，能够为您锁定长期收益，确保晚年有持续稳定的现金流"；<br>
-                    <strong>2、婚姻风险解决</strong>："建议签署书面财产协议，基于《民法典》相关规定明确同居期间财产归属，避免财产混同风险，保障各方权益"；<br>
-                    <strong>3、传承风险解决</strong>："增额寿险的保险金归属于指定受益人个人财产，不属夫妻共同财产，有效规避因婚姻风险带来的家族财富流失，实现精准传承"；<br>
-                    <strong>4、资产配置风险解决</strong>："保单具备贷款功能，最高可贷现金价值的80%，放款速度快，为您提供高流动性，同时不影响个人征信记录"
+                    <strong>1、资产配置风险解决：</strong>"我们推荐的增额终身寿险具备明确的复利增长机制，年化复利收益可达保额的2.0%，长期可观，能有效解决您收益率偏低无法增值保值的问题"；<br>
+                    <strong>2、流动性风险解决：</strong>"增额寿险最高可贷保单现金价值的80%，放款效率高，小额贷款可实现当日到账，大额贷款T+3到账，完美解决您房产占比过高导致的变现困难问题"；<br>
+                    <strong>3、风险隔离风险解决：</strong>"根据《保险法》相关规定，明确指定受益人的保险金不属于被保险人遗产，不计入遗产清算范围，可有效隔离您企业经营风险"；<br>
+                    <strong>4、财富传承风险解决：</strong>"保险金和信托受益金归属于指定受益人个人财产，不属夫妻共同财产，能有效规避因复杂家庭结构导致的继承纠纷问题"。
                 </div>
             </div>
             <div class="talk-card">
-                <div class="card-title"><span>✨</span>附加整体价值总结</div>
+                <div class="card-title">附加整体价值总结</div>
                 <div class="card-content">
-                    "通过本次1000万元增额寿险配置，您的养老保障将更加稳健，资产配置结构得到优化，婚姻财产关系更加清晰，子女教育资金更有保障，真正实现财富安全与传承无忧"
+                    "通过本次1000万增额寿险配置，您的资产风险得到有效控制，收益稳定性大幅提升，资金流动性显著改善，同时实现了风险隔离和财富传承的双重保障"。
                 </div>
             </div>
             <div class="talk-card">
-                <div class="card-title"><span>🚀</span>推动成交</div>
+                <div class="card-title">推动成交</div>
                 <div class="card-content">
-                    1、"您提到希望给两个儿子做好教育规划，这个方案能确保教育资金专项专用，避免资金挪用风险"；<br>
-                    2、"现在配置可以锁定当前利率水平，避免未来利率下行带来的收益损失"；<br>
-                    3、"5年缴费期结束后，您就拥有了一份终身增值的资产，既保障了晚年生活，又为子女留下了确定的财富"；<br>
-                    4、"这份规划能让您安心享受现在的生活，不再为未来的养老和传承问题担忧"
+                    1、"您提到希望资产能够稳健增值，这个方案能锁定长期复利收益，确保财富持续增长不受市场波动影响"；<br>
+                    2、"考虑到您复杂的家庭结构和两个儿子的未来，这个方案能实现精准传承，避免因继承问题引发的家庭纠纷"；<br>
+                    3、"您现在51岁正是配置的最佳时机，越早配置复利效应越明显，能为未来的养老和生活品质提供坚实保障"；<br>
+                    4、"1000万的配置在您总资产中占比合理，既能解决当前风险问题，又不会过度占用您的流动资金，实现资产配置的优化升级"。
                 </div>
             </div>
         </div>
