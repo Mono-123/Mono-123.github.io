@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B客户保障规划方案</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            overflow: hidden;
+            padding: 30px;
+        }
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #1976D2 0%, #0D47A1 100%);
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1976D2;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #1976D2;
+        }
+        .info-card, .risk-card, .plan-card, .talk-card, .summary-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 4px solid;
+            display: flex;
+            align-items: flex-start;
+        }
+        .info-card {
+            border-left-color: #4CAF50;
+            background-color: #E8F5E9;
+            color: #1B5E20;
+        }
+        .risk-card {
+            border-left-color: #FF9800;
+            background-color: #FFF3E0;
+            color: #E65100;
+        }
+        .plan-card {
+            border-left-color: #9C27B0;
+            background-color: #F3E5F5;
+            color: #4A148C;
+        }
+        .talk-card {
+            border-left-color: #00BCD4;
+            background-color: #E0F7FA;
+            color: #006064;
+        }
+        .summary-card {
+            border-left-color: #F44336;
+            background-color: #FFEBEE;
+            color: #B71C1C;
+        }
+        .card-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            margin-top: 2px;
+        }
+        .card-content {
+            flex: 1;
+        }
+        .card-content strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        /* PDF下载按钮样式 - 右上角 */
+        .pdf-download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .pdf-download-btn:hover {
+            background-color: #3a80d2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(74, 144, 226, 0.4);
+        }
+
+        .pdf-download-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+        }
+
+        .pdf-download-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .pdf-download-btn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+
+            .container {
+                padding-top: 60px;
+            }
+        }
+
+        @media print {
+            .pdf-download-btn {
+                display: none;
+            }
+
+            body {
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 10px;
+            }
+        }
+    </style>
+    <!-- 只引入最核心、最稳定的库（CDN改用bootcdn，避免cdnjs失效） -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <!-- PDF下载按钮 - 右上角 -->
+    <button id="pdfDownloadBtn" class="pdf-download-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="20" height="20">
+            <path d="M12 16L12 2M12 16L16 12M12 16L8 12M2 18L2 22 22 22 22 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        PDF下载
+    </button>
+
+    <div class="container" id="pdfContent">
+        <div class="header">
+            <h1>B客户保障规划方案</h1>
+        </div>
+
+        <div class="section">
+            <div class="section-title">一、客户信息</div>
+            <div class="info-card">
+                <span class="card-icon">👤</span>
+                <div class="card-content">
+                    <strong>客户基本情况</strong>
+                    • 年龄：51岁<br>
+                    • 性别：男<br>
+                    • 婚姻状态：离异后重组（未领证同居）<br>
+                    • 职业：曾任职供电局，近十年主要通过放贷、拍卖法拍房赚钱<br>
+                    • 健康状况：无明确提及<br>
+                    • 其他：独生子女
+                </div>
+            </div>
+            <div class="info-card">
+                <span class="card-icon">👩❤️👨</span>
+                <div class="card-content">
+                    <strong>配偶信息</strong>
+                    • 现任伴侣：38岁女友（未领证）<br>
+                    • 前妻：中学优秀教师，已再婚
+                </div>
+            </div>
+            <div class="info-card">
+                <span class="card-icon">👶</span>
+                <div class="card-content">
+                    <strong>子女信息</strong>
+                    • 子女数量：2人（同父异母，互不知晓）<br>
+                    • 长子（前妻所生）：16岁，市重点高中在读，略显贪玩<br>
+                    • 次子（现女友所生）：8岁，懂事
+                </div>
+            </div>
+            <div class="info-card">
+                <span class="card-icon">👵</span>
+                <div class="card-content">
+                    <strong>父母信息</strong>
+                    • 父亲：已病逝<br>
+                    • 母亲：76岁，身体健康，未再婚<br>
+                    • 特殊情况：客户约一半金融资产存放在母亲名下
+                </div>
+            </div>
+            <div class="info-card">
+                <span class="card-icon">💰</span>
+                <div class="card-content">
+                    <strong>资产配置情况</strong>
+                    • 房产：估值9000余万元（含投资商铺、近百套住房及停车场）<br>
+                    • 金融资产总量：4000余万元<br>
+                    • 存款/理财：保本保息类（大额存单）3100万元；固收理财600万元；天天理财600万元<br>
+                    • 股票：持仓1000万元<br>
+                    • 外币：港币数百万元（存放于香港账户）<br>
+                    • 保险：目前无配置<br>
+                    • 基金：无配置
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">二、风险详细诊断</div>
+            <div class="risk-card">
+                <span class="card-icon">👵</span>
+                <div class="card-content">
+                    <strong>养老规划风险</strong>
+                    <strong>1、现状描述</strong>：<br>客户51岁临近退休，资产配置中无保险资产，缺乏稳定的养老金现金流规划，现有资产偏重流动性但长期养老保障不足<br>
+                    <strong>2、潜在风险及后果</strong>：<br>
+                    （1）股票投资波动性大，可能因市场剧烈波动导致退休生活质量急剧下降；<br>
+                    （2）缺乏与寿命等长的确定性养老收入来源，晚年生活可能面临资金短缺困境；<br>
+                    （3）现有资产配置无法提供持续稳定的现金流，退休后可能被迫变现资产影响整体财富规划；<br>
+                    （4）无保险保障，医疗和护理费用可能侵蚀大量资产，影响生活品质
+                </div>
+            </div>
+            <div class="risk-card">
+                <span class="card-icon">💔</span>
+                <div class="card-content">
+                    <strong>婚姻风险</strong>
+                    <strong>1、现状描述</strong>：<br>客户与38岁女友同居未办理结婚登记，复杂家庭关系缺乏法律保障，存在防范财富流失的婚姻安排<br>
+                    <strong>2、潜在风险及后果</strong>：<br>
+                    （1）同居关系缺乏法律保护，财产分割不明确，可能引发重大纠纷；<br>
+                    （2）防范财富流失的婚姻安排可能影响家庭稳定性，导致情感关系紧张；<br>
+                    （3）复杂家庭关系需要专业的财产规划，否则可能面临财产混同风险；<br>
+                    （4）根据《民法典》相关规定，未登记婚姻无法享有法定夫妻权利义务，权益保障不足
+                </div>
+            </div>
+            <div class="risk-card">
+                <span class="card-icon">🎓</span>
+                <div class="card-content">
+                    <strong>子女教育规划风险</strong>
+                    <strong>1、现状描述</strong>：<br>两个儿子年龄差异大（16岁和8岁），教育资金需求时间分布不均，缺乏专项教育金规划<br>
+                    <strong>2、潜在风险及后果</strong>：<br>
+                    （1）长子略显贪玩，缺乏教育激励与资金保障机制，可能影响学业发展；<br>
+                    （2）教育资金需求集中爆发时可能造成现金流压力，影响其他财务目标；<br>
+                    （3）缺乏专项规划可能导致教育资源分配不均衡，引发家庭矛盾；<br>
+                    （4）根据《民法典》第1067-1068条，父母有抚养教育义务，规划不足可能影响子女未来发展
+                </div>
+            </div>
+            <div class="risk-card">
+                <span class="card-icon">📊</span>
+                <div class="card-content">
+                    <strong>资产配置风险</strong>
+                    <strong>1、现状描述</strong>：<br>资产过度集中于房产投资，拒绝保险基金等工具，股票投资占比较高，缺乏长期锁定收益的稳健型配置<br>
+                    <strong>2、潜在风险及后果</strong>：<br>
+                    （1）房产投资流动性相对不足，急需用钱时可能无法快速变现；<br>
+                    （2）拒绝保险基金等工具导致资产配置结构不完善，风险分散不足；<br>
+                    （3）股票投资占比较高，市场波动风险较大，可能造成资产大幅缩水；<br>
+                    （4）缺乏长期锁定收益的稳健型配置，无法有效对冲通胀和利率下行风险
+                </div>
+            </div>
+            <div class="summary-card">
+                <span class="card-icon">⚠️</span>
+                <div class="card-content">
+                    <strong>风险总结</strong>
+                    1、养老保障严重不足，缺乏稳定现金流和长期收入来源；<br>
+                    2、婚姻关系法律保障缺失，财产分割风险突出；<br>
+                    3、子女教育规划不完善，资金需求时间分布不均；<br>
+                    4、资产配置结构不合理，风险分散和收益锁定能力不足；<br>
+                    5、整体缺乏系统性保障规划，多重风险叠加可能影响财富安全和家庭稳定
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">三、方案设计</div>
+            <div class="plan-card">
+                <span class="card-icon">⚖️</span>
+                <div class="card-content">
+                    <strong>法律工具建议</strong>
+                    <strong>1、财产协议安排</strong>：基于《民法典》第1065条，建议签署书面财产协议，明确同居期间财产归属，避免财产混同风险；<br>
+                    <strong>2、遗嘱规划完善</strong>：结合《民法典》第1133条，建议设立正式遗嘱并考虑遗嘱信托安排，避免子女互不知晓导致的遗产纠纷；<br>
+                    <strong>3、监护权协议</strong>：针对未成年子女抚养教育，建议签署监护权相关协议，确保子女权益得到保障
+                </div>
+            </div>
+            <div class="plan-card">
+                <span class="card-icon">💰</span>
+                <div class="card-content">
+                    <strong>金融工具建议</strong>
+                    <strong>1、保障类工具配置说明</strong>：<br>建议客户配置1000万元增额终身寿险（主推产品），缴费方式为期缴，缴费期5年，年缴200万元<br>
+                    <strong>2、核心功能说明</strong>：<br>
+                    <strong>（1）收益锁定</strong>：提供明确的复利增长机制，年化复利收益可达保额的2.0%，长期可观，适合稳健型资产配置；<br>
+                    <strong>（2）财富传承</strong>：保险金归属于指定受益人个人财产，不属夫妻共同财产，有效规避因婚姻风险带来的家族财富流失；<br>
+                    <strong>（3）避债隔离</strong>：保单现金价值归投保人所有，可有效隔离债务，保障资产安全；<br>
+                    <strong>（4）轻度养老</strong>：可在晚年根据需要部分退保、减额领取，灵活释放现金流，保障晚年资金充足
+                </div>
+            </div>
+            <div class="plan-card">
+                <span class="card-icon">🎯</span>
+                <div class="card-content">
+                    <strong>方案价值呈现</strong>
+                    <strong>1、婚姻风险解决</strong>：通过财产协议明确财产归属，避免同居关系导致的财产分割纠纷，依据《民法典》第1065条保障各方权益；<br>
+                    <strong>2、养老保障完善</strong>：增额寿险提供稳定复利增长，确保晚年有持续现金流，解决缺乏确定性养老收入来源问题；<br>
+                    <strong>3、子女教育规划</strong>：通过保险金信托机制，可为两个儿子设立独立账户，确保教育资金专项专用，避免资金挪用风险；<br>
+                    <strong>4、资产配置优化</strong>：增额寿险提供长期锁利功能，不受金融市场波动干扰，有效对冲利率下行风险，完善资产配置结构；<br>
+                    <strong>5、财富传承安全</strong>：根据《保险法》第42条，明确指定受益人的保险金不属于被保险人遗产，不计入遗产清算范围，实现精准传承
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">四、沟通话术</div>
+            <div class="talk-card">
+                <span class="card-icon">💬</span>
+                <div class="card-content">
+                    <strong>客户需求激发</strong>
+                    1、"从您目前的资产配置来看，虽然现金资产充足，但缺乏稳定的养老金现金流规划，51岁这个阶段如果现在不开始准备，等到60岁退休时可能面临资金短缺的困境"；<br>
+                    2、"您提到股票投资占比较高，市场波动风险确实较大，一旦遇到熊市可能会大幅影响您退休后的生活质量"；<br>
+                    3、"两个儿子年龄相差8岁，教育资金需求时间分布不均，如果没有专项规划，未来可能会造成现金流压力"；<br>
+                    4、"您与女友的同居关系缺乏法律保障，万一发生变故，财产分割可能会很复杂，需要提前做好法律安排"
+                </div>
+            </div>
+            <div class="talk-card">
+                <span class="card-icon">🎯</span>
+                <div class="card-content">
+                    <strong>方案价值呈现</strong>
+                    <strong>1、养老风险解决</strong>："我们推荐的增额终身寿险提供明确的复利增长机制，年化复利收益可达保额的2.0%，能够为您锁定长期收益，确保晚年有持续稳定的现金流"；<br>
+                    <strong>2、婚姻风险解决</strong>："建议签署书面财产协议，基于《民法典》相关规定明确同居期间财产归属，避免财产混同风险，保障各方权益"；<br>
+                    <strong>3、传承风险解决</strong>："增额寿险的保险金归属于指定受益人个人财产，不属夫妻共同财产，有效规避因婚姻风险带来的家族财富流失，实现精准传承"；<br>
+                    <strong>4、资产配置风险解决</strong>："保单具备贷款功能，最高可贷现金价值的80%，放款速度快，为您提供高流动性，同时不影响个人征信记录"
+                </div>
+            </div>
+            <div class="talk-card">
+                <span class="card-icon">✨</span>
+                <div class="card-content">
+                    <strong>附加整体价值总结</strong>
+                    "通过本次1000万元增额寿险配置，您的养老保障将更加稳健，资产配置结构得到优化，婚姻财产关系更加清晰，子女教育资金更有保障，真正实现财富安全与传承无忧"
+                </div>
+            </div>
+            <div class="talk-card">
+                <span class="card-icon">🚀</span>
+                <div class="card-content">
+                    <strong>推动成交</strong>
+                    1、"您提到希望给两个儿子做好教育规划，这个方案能确保教育资金专项专用，避免资金挪用风险"；<br>
+                    2、"现在配置可以锁定当前利率水平，避免未来利率下行带来的收益损失"；<br>
+                    3、"5年缴费期结束后，您就拥有了一份终身增值的资产，既保障了晚年生活，又为子女留下了确定的财富"；<br>
+                    4、"这份规划能让您安心享受现在的生活，不再为未来的养老和传承问题担忧"
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // 等待页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', function() {
+        const pdfDownloadBtn = document.getElementById('pdfDownloadBtn');
+        
+        pdfDownloadBtn.addEventListener('click', async function() {
+            // 显示下载提示
+            const originalText = pdfDownloadBtn.innerHTML;
+            pdfDownloadBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg> 生成中...';
+            pdfDownloadBtn.disabled = true;
+            
+            try {
+                // ========== 1. 核心：保留你原有的分页逻辑，一字未改 ==========
+                // 隐藏PDF按钮避免出现在PDF中
+                pdfDownloadBtn.style.display = 'none';
+                
+                // 获取PDF内容容器
+                const pdfContent = document.getElementById('pdfContent');
+                
+                // 获取容器原始样式
+                const originalBoxShadow = pdfContent.style.boxShadow;
+                const originalMargin = pdfContent.style.margin;
+                
+                // 临时移除阴影和调整边距以便PDF生成更清晰
+                pdfContent.style.boxShadow = 'none';
+                pdfContent.style.margin = '0 auto';
+                
+                // 创建PDF文档
+                const { jsPDF } = window.jspdf;
+                
+                // PDF尺寸和边距设置
+                const pdf = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4'
+                });
+                
+                // 获取PDF页面尺寸
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                
+                // 边距设置
+                const margin = 10; // 10mm边距
+                const contentWidth = pdfWidth - 2 * margin;
+                
+                // 当前位置
+                let currentY = margin;
+                
+                // 按section处理内容
+                const sections = document.querySelectorAll('.section');
+                
+                // 先处理标题
+                const header = document.querySelector('.header');
+                const headerCanvas = await html2canvas(header, {
+                    scale: 2,
+                    backgroundColor: '#ffffff',
+                    useCORS: true,
+                    logging: false
+                });
+                
+                // 计算标题图片尺寸
+                const headerImgWidth = contentWidth;
+                const headerImgHeight = (headerCanvas.height * headerImgWidth) / headerCanvas.width;
+                
+                // ========== 新增：嵌入标题的可复制文本层（视觉上隐藏，仅用于复制） ==========
+                pdf.setTextColor(255, 255, 255); // 文字颜色设为白色（与背景一致，隐藏）
+                pdf.setFontSize(20);
+                pdf.text(header.textContent.trim(), pdfWidth / 2, currentY + headerImgHeight / 2, { align: 'center' });
+                pdf.setTextColor(0, 0, 0); // 恢复黑色
+                
+                // 添加标题图片（覆盖在文本层上，保持样式）
+                pdf.addImage(headerCanvas.toDataURL('image/jpeg', 1.0), 'JPEG', 
+                            margin, currentY, headerImgWidth, headerImgHeight);
+                
+                // 更新当前位置
+                currentY += headerImgHeight + 10;
+                
+                // 处理每个section
+                for (let i = 0; i < sections.length; i++) {
+                    const section = sections[i];
+                    
+                    // 获取section标题
+                    const sectionTitle = section.querySelector('.section-title');
+                    const sectionTitleCanvas = await html2canvas(sectionTitle, {
+                        scale: 2,
+                        backgroundColor: '#ffffff',
+                        useCORS: true,
+                        logging: false
+                    });
+                    
+                    // 计算section标题图片尺寸
+                    const sectionTitleImgWidth = contentWidth;
+                    const sectionTitleImgHeight = (sectionTitleCanvas.height * sectionTitleImgWidth) / sectionTitleCanvas.width;
+                    
+                    // 获取section中的所有卡片
+                    const cards = section.querySelectorAll('.info-card, .risk-card, .plan-card, .talk-card, .summary-card');
+                    
+                    // 检查section内容的总高度
+                    let sectionContentHeight = sectionTitleImgHeight + 5; // 标题高度 + 间距
+                    
+                    // 计算第一个卡片的高度（如果存在）
+                    if (cards.length > 0) {
+                        const firstCard = cards[0];
+                        const firstCardCanvas = await html2canvas(firstCard, {
+                            scale: 2,
+                            backgroundColor: '#ffffff',
+                            useCORS: true,
+                            logging: false
+                        });
+                        const firstCardImgHeight = (firstCardCanvas.height * contentWidth) / firstCardCanvas.width;
+                        sectionContentHeight += firstCardImgHeight + 5; // 第一个卡片高度 + 间距
+                    }
+                    
+                    // 关键：你的原分页逻辑——检查当前页剩余空间是否足够放置标题和至少一个卡片
+                    if (currentY + sectionContentHeight > pdfHeight - margin) {
+                        pdf.addPage();
+                        currentY = margin;
+                    }
+                    
+                    // ========== 新增：嵌入section标题的可复制文本层 ==========
+                    pdf.setTextColor(255, 255, 255); // 隐藏文字
+                    pdf.setFontSize(16);
+                    pdf.text(sectionTitle.textContent.trim(), margin, currentY + sectionTitleImgHeight / 2);
+                    pdf.setTextColor(0, 0, 0); // 恢复黑色
+                    
+                    // 添加section标题图片
+                    pdf.addImage(sectionTitleCanvas.toDataURL('image/jpeg', 1.0), 'JPEG', 
+                                margin, currentY, sectionTitleImgWidth, sectionTitleImgHeight);
+                    
+                    // 更新当前位置
+                    currentY += sectionTitleImgHeight + 5;
+                    
+                    // 处理每个卡片
+                    for (let j = 0; j < cards.length; j++) {
+                        const card = cards[j];
+                        const cardCanvas = await html2canvas(card, {
+                            scale: 2,
+                            backgroundColor: '#ffffff',
+                            useCORS: true,
+                            logging: false
+                        });
+                        
+                        // 计算卡片图片尺寸
+                        const cardImgWidth = contentWidth;
+                        const cardImgHeight = (cardCanvas.height * cardImgWidth) / cardCanvas.width;
+                        
+                        // 关键：你的原分页逻辑——检查卡片是否可以放在当前页
+                        if (currentY + cardImgHeight > pdfHeight - margin) {
+                            pdf.addPage();
+                            currentY = margin;
+                        }
+                        
+                        // ========== 新增：嵌入卡片的可复制文本层 ==========
+                        pdf.setTextColor(255, 255, 255); // 隐藏文字
+                        pdf.setFontSize(12);
+                        // 提取卡片内的所有文本并换行
+                        const cardText = Array.from(card.querySelectorAll('p')).map(p => p.textContent.trim()).join('\n');
+                        pdf.text(cardText, margin + 5, currentY + 10, { maxWidth: contentWidth - 10 });
+                        pdf.setTextColor(0, 0, 0); // 恢复黑色
+                        
+                        // 添加卡片图片
+                        pdf.addImage(cardCanvas.toDataURL('image/jpeg', 1.0), 'JPEG', 
+                                    margin, currentY, cardImgWidth, cardImgHeight);
+                        
+                        // 更新当前位置
+                        currentY += cardImgHeight + 5;
+                    }
+                    
+                    // 在section之间添加更多间距
+                    currentY += 10;
+                }
+                
+                // 恢复原始样式
+                pdfContent.style.boxShadow = originalBoxShadow;
+                pdfContent.style.margin = originalMargin;
+                
+                // 显示PDF按钮
+                pdfDownloadBtn.style.display = 'flex';
+                
+                // 保存PDF文件
+                pdf.save(`B客户保障规划方案.pdf`);
+                
+            } catch (error) {
+                console.error('生成PDF时出错:', error);
+                // 显示PDF按钮
+                pdfDownloadBtn.style.display = 'flex';
+                
+                // 提供备用方案：使用浏览器打印
+                const usePrint = confirm('生成PDF时出现错误，是否使用浏览器打印功能？\n\n点击"确定"使用打印功能，点击"取消"重试PDF生成。');
+                if (usePrint) {
+                    window.print();
+                }
+            } finally {
+                // 恢复按钮状态
+                pdfDownloadBtn.innerHTML = originalText;
+                pdfDownloadBtn.disabled = false;
+            }
+        });
+        
+        // 添加打印功能备用方案
+        window.addEventListener('beforeprint', function() {
+            document.getElementById('pdfDownloadBtn').style.display = 'none';
+        });
+        
+        window.addEventListener('afterprint', function() {
+            document.getElementById('pdfDownloadBtn').style.display = 'flex';
+        });
+    });
+    </script>
+</body>
+</html>
